@@ -1,0 +1,11 @@
+FROM ubuntu
+MAINTAINER ravi
+RUN apt-get update -y && apt-get install -y nginx
+RUN apt-get install -y vim curl tree wget
+COPY index.html /usr/share/nginx/html/index.html
+ENV JAVA_HOME=/usr/bin/java
+USER root
+WORKDIR /usr/share/nginx/html/
+VOLUME /myvol
+EXPOSE 80
+CMD ["service","nginx","start"]
